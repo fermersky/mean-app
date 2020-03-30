@@ -20,15 +20,26 @@ router.post('/register', async (req, res) => {
     // crypt password
     const encryptedPass = await bcryptjs.hash(user.password, await bcryptjs.genSalt(10));
 
+    //validate username
+    const username = user.name
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/, '-');
+
     // add user to db
     const addedUser = await User.create({
-      name: '@' + user.name,
+      name: '@' + username,
       email: user.email,
       password: encryptedPass,
       img_path: user.img_path
     });
 
-    res.status(201).json({ _id: addedUser._id });
+    const token = jwt.sign({ _id: addedUser._id }, process.env.USER_SECRET, { expiresIn: 900 });
+    res.header('Authorization', 'Bearer ' + token).json({
+      token,
+      user_id: addedUser._id,
+      name: user.name
+    });
   } catch (err) {
     res.status(400).send(err);
   }
@@ -53,7 +64,7 @@ router.post('/login', async (req, res) => {
     }
 
     // get token
-    const token = jwt.sign({ _id: user._id }, process.env.USER_SECRET, { expiresIn: 300 });
+    const token = jwt.sign({ _id: user._id }, process.env.USER_SECRET, { expiresIn: 900 });
     res.header('Authorization', 'Bearer ' + token).json({
       token,
       user_id: user._id,
