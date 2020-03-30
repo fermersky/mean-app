@@ -12,6 +12,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EqualsValidatorComponent } from './validators/equals-validator/equals-validator.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     BrowserAnimationsModule,
     MatButtonModule,
     RouteModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

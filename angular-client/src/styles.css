@@ -27,9 +27,23 @@ a {
   display: flex;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.f-a-c {
+  align-items: center;
+}
+
 .container {
   padding-top: 40px;
   width: 60%;
   margin: 0 auto;
   text-align: center;
+}
+
+.form-input {
+  width: 350px;
+  margin: 10px 0;
 }
