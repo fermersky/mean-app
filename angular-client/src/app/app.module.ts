@@ -11,6 +11,8 @@ import { RouteModule } from './route/route.module';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    RouteModule
+    RouteModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
