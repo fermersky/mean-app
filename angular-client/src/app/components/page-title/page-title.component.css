@@ -1,0 +1,12 @@
+.app-page-title {
+  background: #3f51b5;
+  padding: 40px;
+  top: 60px;
+  width: 100%;
+}
+
+.app-page-title-header {
+  font-weight: normal;
+  color: #fff;
+  font-size: 25px;
+}
