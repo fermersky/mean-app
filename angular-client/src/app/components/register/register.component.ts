@@ -6,6 +6,7 @@ import {
   ValidatorFn,
   ValidationErrors
 } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   public password: FormControl;
   public repeatPassword: FormControl;
 
-  constructor() {
+  constructor(private users: UsersService) {
     this.createFormControls();
     this.createForm();
     this.bindCustomValidators();
@@ -75,7 +76,18 @@ export class RegisterComponent implements OnInit {
     };
   }
 
-  register() {
-    console.log(this.registerForm.value);
+  async register() {
+    if (this.registerForm.valid) {
+      const uinfo = this.registerForm.value;
+
+      try {
+        const resoponse = await this.users
+          .register(uinfo.name, uinfo.email, uinfo.password)
+          .toPromise();
+        console.log(resoponse);
+      } catch (ex) {
+        console.log(ex);
+      }
+    }
   }
 }
