@@ -6,9 +6,9 @@ import {
   ValidatorFn,
   ValidationErrors
 } from '@angular/forms';
-import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   public repeatPassword: FormControl;
 
   constructor(
-    private users: UsersService,
+    private auth: AuthService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {
@@ -98,12 +98,12 @@ export class RegisterComponent implements OnInit {
       const uinfo = this.registerForm.value;
 
       try {
-        const response = await this.users
+        const response = await this.auth
           .httpRegister(uinfo.name, uinfo.email, uinfo.password)
           .toPromise();
 
         if (response) {
-          this.users.signIn(response);
+          this.auth.signIn(response);
           this.router.navigate(['profile']);
         }
       } catch (ex) {

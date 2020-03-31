@@ -2,20 +2,20 @@
   <nav>
     <ul class="flex-row app-header-menu-list">
       <li><a [routerLink]="['home']" mat-button>Home</a></li>
-      <li *ngIf="!users.isSignedIn()">
+      <li *ngIf="!auth.isSignedIn()">
         <a [routerLink]="['register']" mat-button>Register</a>
       </li>
-      <li *ngIf="!users.isSignedIn()">
+      <li *ngIf="!auth.isSignedIn()">
         <a [routerLink]="['login']" mat-button
           ><i class="fas fa-sign-in-alt"></i>Log in</a
         >
       </li>
-      <li *ngIf="users.isSignedIn()">
+      <li *ngIf="auth.isSignedIn()">
         <a [routerLink]="['profile']" mat-button
           ><i class="fas fa-user-circle"></i>My Profile</a
         >
       </li>
-      <li *ngIf="users.isSignedIn()">
+      <li *ngIf="auth.isSignedIn()">
         <a (click)="logout()" mat-button
           ><i id="logout-icon" class="fas fa-sign-in-alt"></i>Log out</a
         >

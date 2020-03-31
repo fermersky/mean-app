@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserInfo } from 'src/app/models/user-info';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,7 @@ export class LoginComponent {
   public password: FormControl;
 
   constructor(
-    private users: UsersService,
+    private auth: AuthService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {
@@ -54,10 +54,10 @@ export class LoginComponent {
       const form = this.loginForm.value;
 
       try {
-        const uinfo = await this.users
+        const uinfo = await this.auth
           .httpLogin(form.email, form.password)
           .toPromise();
-        this.users.signIn(uinfo);
+        this.auth.signIn(uinfo);
 
         this.router.navigate(['profile']);
       } catch (ex) {

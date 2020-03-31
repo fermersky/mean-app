@@ -1,14 +1,14 @@
 import { CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizedOnlyGuard implements CanActivate {
-  constructor(private user: UsersService) {}
+  constructor(private auth: AuthService) {}
 
   canActivate(): boolean {
-    return this.user.isSignedIn();
+    return this.auth.isSignedIn();
   }
 }

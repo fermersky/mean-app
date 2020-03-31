@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(public users: UsersService, public router: Router) {}
+  constructor(public auth: AuthService, public router: Router) {}
 
   ngOnInit() {}
 
   logout() {
-    this.users.signOut();
+    this.auth.signOut();
     this.router.navigate(['home']);
   }
 }
