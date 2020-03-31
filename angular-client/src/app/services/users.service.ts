@@ -11,9 +11,16 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  register(name, email, password): Observable<UserInfo> {
+  httpRegister(name, email, password): Observable<UserInfo> {
     return this.http.post<UserInfo>(this.baseUrl + '/register', {
       name,
+      email,
+      password
+    });
+  }
+
+  httpLogin(email, password): Observable<UserInfo> {
+    return this.http.post<UserInfo>(this.baseUrl + '/login', {
       email,
       password
     });
