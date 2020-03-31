@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,11 @@ export class RegisterComponent implements OnInit {
   public password: FormControl;
   public repeatPassword: FormControl;
 
-  constructor(private users: UsersService, private router: Router) {
+  constructor(
+    private users: UsersService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
     this.createFormControls();
     this.createForm();
     this.bindCustomValidators();
@@ -82,13 +87,19 @@ export class RegisterComponent implements OnInit {
     };
   }
 
+  openSnackBar(msg) {
+    this.snackBar.open(msg, 'Got it!', {
+      duration: 2000
+    });
+  }
+
   async register() {
     if (this.registerForm.valid) {
       const uinfo = this.registerForm.value;
 
       try {
         const response = await this.users
-          .register(uinfo.name, uinfo.email, uinfo.password)
+          .httpRegister(uinfo.name, uinfo.email, uinfo.password)
           .toPromise();
 
         if (response) {
@@ -98,6 +109,8 @@ export class RegisterComponent implements OnInit {
       } catch (ex) {
         console.log(ex);
       }
+    } else {
+      this.openSnackBar('Validation error(s) detected!');
     }
   }
 }
