@@ -7,6 +7,7 @@ import {
   ValidationErrors
 } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,8 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  private emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+
   public registerForm: FormGroup;
 
   public name: FormControl;
@@ -21,7 +24,7 @@ export class RegisterComponent implements OnInit {
   public password: FormControl;
   public repeatPassword: FormControl;
 
-  constructor(private users: UsersService) {
+  constructor(private users: UsersService, private router: Router) {
     this.createFormControls();
     this.createForm();
     this.bindCustomValidators();
@@ -35,7 +38,10 @@ export class RegisterComponent implements OnInit {
       Validators.min(4),
       Validators.max(20)
     ]);
-    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.emailRegex)
+    ]);
     this.password = new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -81,10 +87,14 @@ export class RegisterComponent implements OnInit {
       const uinfo = this.registerForm.value;
 
       try {
-        const resoponse = await this.users
+        const response = await this.users
           .register(uinfo.name, uinfo.email, uinfo.password)
           .toPromise();
-        console.log(resoponse);
+
+        if (response) {
+          this.users.signIn(response);
+          this.router.navigate(['profile']);
+        }
       } catch (ex) {
         console.log(ex);
       }
