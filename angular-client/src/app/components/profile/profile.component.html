@@ -1,0 +1,29 @@
+<app-page-title [title]="'Hello, ' + uinfo.name"></app-page-title>
+
+<div class="container hints-container" style="text-align: left;">
+  <h2 style="margin-bottom: 20px;">Your hints:</h2>
+
+  <ul class="profile-hints-list">
+    <li
+      class="profile-hints-list--item"
+      *ngFor="let h of hintsForAuthor; let i = index"
+    >
+      <span class="hint-item--index">{{ i + 1 }}</span>
+
+      <h3 class="hint-item--title">
+        <a class="hint-item--title--link" href="#">{{ h.title }}</a>
+      </h3>
+
+      <div class="hint-item--tags">
+        <span class="hint-item--tags--tag" *ngFor="let t of h.tags">
+          {{ t }}
+        </span>
+      </div>
+
+      <h4 class="hint-item--date">
+        <i class="fas fa-calendar-day"></i>
+        {{ h.date | date }}
+      </h4>
+    </li>
+  </ul>
+</div>
