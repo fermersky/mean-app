@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 
     // add user to db
     const addedUser = await User.create({
-      name: '@' + username,
+      name: username,
       email: user.email,
       password: encryptedPass,
       img_path: user.img_path || 'noimage.png'
@@ -52,15 +52,13 @@ router.post('/login', async (req, res) => {
     // check user exists or not
     const user = await User.findOne({ email: req.body.email });
 
-    if (!user) {
-      return res.status(404).json({ message: `Email or password is wrong` });
-    }
-
     // compare passwords
     const validPass = await bcryptjs.compare(req.body.password, user.password);
 
-    if (!validPass) {
-      return res.status(404).json({ message: `Invalid password` });
+    const wrongCredentials = !user || !validPass;
+
+    if (wrongCredentials) {
+      return res.status(404).json({ message: `Email or password is wrong` });
     }
 
     // get token
