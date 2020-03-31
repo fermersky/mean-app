@@ -12,3 +12,7 @@
 i {
   margin-right: 10px;
 }
+
+#logout-icon {
+  transform: rotateZ(180deg);
+}
