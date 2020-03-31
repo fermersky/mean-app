@@ -27,8 +27,7 @@ const registerUserValidateAsync = async data => {
       .email(),
     password: Joi.string()
       .min(3)
-      .required(),
-    img_path: Joi.string()
+      .required()
   });
 
   return await schema.validateAsync(data);

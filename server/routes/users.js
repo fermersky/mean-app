@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
       name: '@' + username,
       email: user.email,
       password: encryptedPass,
-      img_path: user.img_path
+      img_path: user.img_path || 'noimage.png'
     });
 
     const token = jwt.sign({ _id: addedUser._id }, process.env.USER_SECRET, { expiresIn: 900 });
