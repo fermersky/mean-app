@@ -34,7 +34,13 @@ router.post('/register', async (req, res) => {
       img_path: user.img_path || 'noimage.png'
     });
 
-    const token = jwt.sign({ _id: addedUser._id }, process.env.USER_SECRET, { expiresIn: 900 });
+    let expiry = new Date();
+    expiry.setDate(expiry.getDate() + 7);
+
+    const token = jwt.sign({ _id: addedUser._id }, process.env.USER_SECRET, {
+      expiresIn: parseInt(expiry.getTime() / 1000)
+    });
+
     res.header('Authorization', 'Bearer ' + token).json({
       token,
       user_id: addedUser._id,
@@ -61,8 +67,14 @@ router.post('/login', async (req, res) => {
       return res.status(404).json({ message: `Email or password is wrong` });
     }
 
+    let expiry = new Date();
+    expiry.setDate(expiry.getDate() + 7);
+
     // get token
-    const token = jwt.sign({ _id: user._id }, process.env.USER_SECRET, { expiresIn: 900 });
+    const token = jwt.sign({ _id: user._id }, process.env.USER_SECRET, {
+      expiresIn: parseInt(expiry.getTime() / 1000)
+    });
+
     res.header('Authorization', 'Bearer ' + token).json({
       token,
       user_id: user._id,
