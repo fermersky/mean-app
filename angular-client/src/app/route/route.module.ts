@@ -8,7 +8,6 @@ import { ProfileComponent } from '../components/profile/profile.component';
 import { AuthorizedOnlyGuard } from '../components/guards/authorized-only-guard';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -16,7 +15,8 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthorizedOnlyGuard]
-  }
+  },
+  { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
 
 @NgModule({

@@ -1,4 +1,11 @@
-.profile-hints-list {
+.hints-container {
+  text-align: center;
+}
+
+.profile-image {
+  margin: 60px auto;
+  border-radius: 50%;
+  max-width: 200px;
 }
 
 .profile-hints-list--item {
