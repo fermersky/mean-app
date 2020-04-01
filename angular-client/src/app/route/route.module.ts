@@ -19,7 +19,8 @@ const routes: Routes = [
     canActivate: [AuthorizedOnlyGuard],
     children: [
       { path: 'list', component: HintsListComponent },
-      { path: 'create', component: CreateHintComponent }
+      { path: 'create', component: CreateHintComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'list' }
     ]
   },
   { path: '', pathMatch: 'full', redirectTo: 'home' }

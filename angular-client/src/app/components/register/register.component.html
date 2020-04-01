@@ -5,7 +5,7 @@
     <mat-label>Name</mat-label>
     <input matInput [formControl]="name" placeholder="Your name" />
     <mat-hint> </mat-hint>
-    <mat-error *ngIf="name.hasError('max') || email.hasError('min')">
+    <mat-error *ngIf="name.hasError('maxlength') || name.hasError('minlength')">
       Name must be more then 4 chars and less then 20 chars
     </mat-error>
     <mat-error *ngIf="name.hasError('required')">
