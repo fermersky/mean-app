@@ -6,6 +6,8 @@ import { RegisterComponent } from '../components/register/register.component';
 import { LoginComponent } from '../components/login/login.component';
 import { ProfileComponent } from '../components/profile/profile.component';
 import { AuthorizedOnlyGuard } from '../components/guards/authorized-only-guard';
+import { CreateHintComponent } from '../components/create-hint/create-hint.component';
+import { HintsListComponent } from '../components/hints-list/hints-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,7 +16,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthorizedOnlyGuard]
+    canActivate: [AuthorizedOnlyGuard],
+    children: [
+      { path: 'list', component: HintsListComponent },
+      { path: 'create', component: CreateHintComponent }
+    ]
   },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];

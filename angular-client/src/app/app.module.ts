@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { CreateHintComponent } from './components/create-hint/create-hint.component';
+import { HintsListComponent } from './components/hints-list/hints-list.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateHintComponent,
+    HintsListComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
