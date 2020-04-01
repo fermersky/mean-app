@@ -28,7 +28,15 @@ export class AuthService {
 
   isSignedIn(): boolean {
     const uinfo = JSON.parse(localStorage.getItem('UserInfo'));
-    return uinfo ? true : false;
+
+    let payload = uinfo.token.split('.')[1];
+    payload = JSON.parse(window.atob(payload));
+
+    if (uinfo) {
+      return payload.exp > Date.now() / 1000;
+    }
+
+    return false;
   }
 
   signIn(uinfo: UserInfo) {
