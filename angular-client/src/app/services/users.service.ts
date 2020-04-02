@@ -15,6 +15,10 @@ export class UsersService {
     return uinfo as UserInfo;
   }
 
+  getUserByName(name): Observable<UserInfo> {
+    return this.http.get<UserInfo>(this.baseUrl + '/name/' + name);
+  }
+
   getUserImage(userId): Observable<Blob> {
     const url = this.baseUrl + '/img/' + userId;
     return this.http.get(url, { responseType: 'blob' });

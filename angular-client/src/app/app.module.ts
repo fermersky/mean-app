@@ -22,6 +22,9 @@ import { MatTableModule } from '@angular/material/table';
 import { CreateHintComponent } from './components/create-hint/create-hint.component';
 import { HintsListComponent } from './components/hints-list/hints-list.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { HintComponent } from './components/hint/hint.component';
+
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     ProfileComponent,
     CreateHintComponent,
     HintsListComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HintComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
