@@ -59,7 +59,7 @@ export class CreateHintComponent implements OnInit {
       const title = this.form.get('title').value;
       const tags = this.form.get('tags').value;
       const author = uinfo.name;
-      const user_id = uinfo.user_id;
+      const user_id = uinfo._id;
 
       try {
         await this.hints.postHint(title, tags, author, user_id).toPromise();

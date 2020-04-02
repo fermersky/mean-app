@@ -43,7 +43,7 @@ router.post('/register', async (req, res) => {
 
     res.header('Authorization', 'Bearer ' + token).json({
       token,
-      user_id: addedUser._id,
+      _id: addedUser._id,
       name: user.name
     });
   } catch (err) {
@@ -77,7 +77,7 @@ router.post('/login', async (req, res) => {
 
     res.header('Authorization', 'Bearer ' + token).json({
       token,
-      user_id: user._id,
+      _id: user._id,
       name: user.name
     });
   } catch (err) {
