@@ -17,6 +17,11 @@ export class HintsService {
     return this.http.get<Hint[]>(url);
   }
 
+  getBySlug(slug): Observable<Hint> {
+    const url = `${this.baseUrl}/slug/${slug}`;
+    return this.http.get<Hint>(url);
+  }
+
   postHint(
     title: string,
     tags: string[],
