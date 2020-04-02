@@ -8,11 +8,15 @@ import { ProfileComponent } from '../components/profile/profile.component';
 import { AuthorizedOnlyGuard } from '../components/guards/authorized-only-guard';
 import { CreateHintComponent } from '../components/create-hint/create-hint.component';
 import { HintsListComponent } from '../components/hints-list/hints-list.component';
+import { HintComponent } from '../components/hint/hint.component';
+import { UserComponent } from '../components/user/user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'hint/:slug', component: HintComponent },
+  { path: 'author/:author', component: UserComponent },
   {
     path: 'profile',
     component: ProfileComponent,
