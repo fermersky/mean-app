@@ -27,8 +27,6 @@ export class HintsListComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    console.log('hint list component');
-
     try {
       this.loading = true;
 
@@ -37,8 +35,6 @@ export class HintsListComponent implements OnInit {
       } else {
         this.uinfo = this.users.getUserFromLocalStorage();
       }
-
-      console.log(this.uinfo);
 
       this.hintsForAuthor = await this.hints
         .getByAuthor(this.uinfo.name)

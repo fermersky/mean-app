@@ -74,8 +74,6 @@ export class CreateHintComponent implements OnInit {
   ngOnInit() {
     this.createFormControls();
     this.createForm();
-
-    this.form.valueChanges.subscribe(v => console.log(v));
   }
 
   get tagsArray() {
