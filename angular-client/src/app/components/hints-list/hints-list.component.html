@@ -3,16 +3,6 @@
 
   <img [src]="profileImageUrl" alt="" class="profile-image" />
 
-  <h2 style="margin-bottom: 20px;">Your hints:</h2>
-
-  <a
-    style="margin: 20px auto"
-    color="primary"
-    [routerLink]="['/profile/create']"
-    mat-raised-button
-    >Create a new hint!</a
-  >
-
   <ul class="profile-hints-list">
     <li
       class="profile-hints-list--item"
@@ -21,7 +11,9 @@
       <span class="hint-item--index">{{ i + 1 }}</span>
 
       <h3 class="hint-item--title">
-        <a class="hint-item--title--link" href="#">{{ h.title }}</a>
+        <a class="hint-item--title--link" [routerLink]="['/hint/' + h.slug]">{{
+          h.title
+        }}</a>
       </h3>
 
       <div class="hint-item--tags">

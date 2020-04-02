@@ -4,10 +4,11 @@
 }
 
 .profile-image {
-  margin: 60px auto;
+  margin: 0px auto;
   border-radius: 50%;
   max-width: 200px;
   box-shadow: 5px 5px 10px #eee;
+  margin-bottom: 30px;
 }
 
 .profile-hints-list--item {

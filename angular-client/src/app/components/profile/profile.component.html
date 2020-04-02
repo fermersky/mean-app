@@ -1,2 +1,11 @@
 <app-page-title [title]="'Hello, ' + uinfo.name"></app-page-title>
+<div class="container">
+  <a
+    style="margin: 20px auto"
+    color="primary"
+    [routerLink]="['/profile/create']"
+    mat-raised-button
+    >Create a new hint!</a
+  >
+</div>
 <router-outlet></router-outlet>
