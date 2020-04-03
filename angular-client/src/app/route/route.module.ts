@@ -10,6 +10,7 @@ import { CreateHintComponent } from '../components/create-hint/create-hint.compo
 import { HintsListComponent } from '../components/hints-list/hints-list.component';
 import { HintComponent } from '../components/hint/hint.component';
 import { UserComponent } from '../components/user/user.component';
+import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'list' }
     ]
   },
-  { path: '', pathMatch: 'full', redirectTo: 'home' }
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

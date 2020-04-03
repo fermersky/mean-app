@@ -25,6 +25,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { HintComponent } from './components/hint/hint.component';
 
 import { UserComponent } from './components/user/user.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserComponent } from './components/user/user.component';
     HintsListComponent,
     LoadingSpinnerComponent,
     HintComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
