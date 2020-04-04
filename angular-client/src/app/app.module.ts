@@ -1,62 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { RouteModule } from './modules/route.module';
+import { HintsModule } from './modules/hints.module';
+import { SharedModule } from './modules/shared.module';
+import { MaterialModule } from './modules/material.module';
+import { AuthModule } from './modules/auth.module';
+import { HintsRoutingModule } from './modules/hints-routing.module';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { PageTitleComponent } from './components/page-title/page-title.component';
-import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
-import { RouteModule } from './route/route.module';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
-import { CreateHintComponent } from './components/create-hint/create-hint.component';
-import { HintsListComponent } from './components/hints-list/hints-list.component';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
-import { HintComponent } from './components/hint/hint.component';
-
 import { UserComponent } from './components/user/user.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AuthRoutingModule } from './modules/auth-routing.module';
+import { ProfileRoutingModule } from './modules/profile-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PageTitleComponent,
     HomeComponent,
-    RegisterComponent,
-    LoginComponent,
     ProfileComponent,
-    CreateHintComponent,
-    HintsListComponent,
-    LoadingSpinnerComponent,
-    HintComponent,
     UserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    RouteModule,
-    MatToolbarModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule,
-    MatTableModule
+    ProfileRoutingModule,
+    HintsModule,
+    AuthModule,
+    RouteModule,
+    SharedModule,
+    MaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
